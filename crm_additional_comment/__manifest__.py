@@ -23,7 +23,7 @@
         'crm'
     ],
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/crm_additional_comment_view.xml',
     ],
     'demo': [
