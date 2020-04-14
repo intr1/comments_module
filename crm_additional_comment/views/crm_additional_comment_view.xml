@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="crm_additional_comment_o2m" model="ir.ui.view">
+            <field name="name">crm.lead.comment.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="priority">12</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='extra']" position="before">
+                    <page string="Comments">
+                        <button name="add_comment" string="Add comment" type="object"/> 
+                        <field name="o2m_lead_comments">
+                            <tree edit='false' create='false' default_order="create_date desc">
+                                <field name="create_date"/>
+                                <field name="create_uid"/>
+                                <field name="comment"/>                                
+                            </tree>
+                        </field>
+                        
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        
+        <record id="view_additional_comment_popup" model="ir.ui.view">
+            <field name="name">crm.additional.comment.form</field>
+            <field name="model">crm.lead.comment.popup</field>
+            <field name="arch" type="xml">
+                <form string="add comment">
+                    <sheet>
+                        <group>
+                            <field name="record_id" invisible="1"/>
+                            <field name="comment_templates"/>
+                            <field name="text" placeholder="No Comment Provided"/>
+                            <field name="add_to_notes"/>
+                            <field name="override_notes"/>
+                            
+                        </group>
+                        <footer>
+                            <button string="Add Comment" type="object" name="comment"/>
+                            <button string="Cancel" special="cancel" class="btn btn-default"/>
+                        </footer>
+                    </sheet>                              
+                </form>
+            </field>
+        </record>
+            
+    </data>
+</odoo>
